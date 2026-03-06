@@ -1,0 +1,34 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  max_connections: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  database: <%= ENV["POSTGRES_DB"] %>
+  username: <%= ENV["POSTGRES_USER"] %>
+  password: <%= ENV["POSTGRES_PASSWORD"] %>
+
+development:
+  <<: *default
+  database: ai_chat_development
+
+test:
+  <<: *default
+  database: ai_chat_test
+
+production:
+  primary: &primary_production
+    <<: *default
+    database: ai_chat_production
+    username: ai_chat
+    password: <%= ENV["AI_CHAT_DATABASE_PASSWORD"] %>
+  cache:
+    <<: *primary_production
+    database: ai_chat_production_cache
+    migrations_paths: db/cache_migrate
+  queue:
+    <<: *primary_production
+    database: ai_chat_production_queue
+    migrations_paths: db/queue_migrate
+  cable:
+    <<: *primary_production
+    database: ai_chat_production_cable
+    migrations_paths: db/cable_migrate
