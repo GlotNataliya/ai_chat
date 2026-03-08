@@ -1,0 +1,29 @@
+<header class="bg-gray-900 text-white shadow-md">
+  <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+    <!-- Логотип / Название приложения -->
+    <div class="text-xl font-bold">
+      <%= link_to "MyApp", root_path, class: "hover:text-gray-300 transition" %>
+    </div>
+
+    <!-- Навигация -->
+    <nav class="flex items-center space-x-4">
+      <% if current_user %>
+        <!-- Если пользователь авторизован -->
+        <span class="text-gray-300 text-sm hidden sm:block">
+          <%= current_user.email_address %>
+        </span>
+
+        <%= button_to "Выйти", session_path,
+            method: :delete,
+            class: "bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-red-500" %>
+      <% else %>
+        <!-- Если пользователь НЕ авторизован -->
+        <%= link_to "Войти", new_session_path,
+            class: "text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition" %>
+
+        <%= link_to "Регистрация", new_registration_path,
+            class: "bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-blue-500" %>
+      <% end %>
+    </nav>
+  </div>
+</header>

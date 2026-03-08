@@ -1,0 +1,49 @@
+<div class="layout-container flex h-full grow flex-col items-center justify-center p-4">
+  <%= render "shared/header_login" %>
+
+  <div class="w-full max-w-[480px] bg-white dark:bg-slate-900/50 p-8 rounded-xl shadow-sm border border-primary/10">
+    <div class="text-center mb-8">
+      <h1 class="text-slate-900 dark:text-white text-3xl font-bold leading-tight mb-2">Welcome Back</h1>
+      <p class="text-slate-500 dark:text-slate-400 text-base">Sign in to continue your conversations</p>
+    </div>
+
+    <%= form_with url: session_path, class: "space-y-5" do |form| %>
+      <div class="flex flex-col gap-2">
+        <%= form.label :email, "Email", class: "text-slate-700 dark:text-slate-300 text-sm font-semibold" %>
+        <%= form.email_field :email_address,
+            placeholder: "name@example.com",
+            class: "w-full rounded-xl border border-primary/20 bg-primary/5 px-4 py-3.5 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all",
+            required: true %>
+      </div>
+
+      <div class="flex flex-col gap-2">
+        <div class="flex justify-between items-center">
+          <%= form.label :password, "Password", class: "text-slate-700 dark:text-slate-300 text-sm font-semibold" %>
+          <%= link_to "Forgot password?", new_password_path, class: "text-primary text-sm font-medium hover:underline" %>
+        </div>
+        <div class="relative" data-controller="password-visibility">
+          <%= form.password_field :password,
+              placeholder: "Enter your password",
+              class: "w-full rounded-xl border border-primary/20 bg-primary/5 px-4 py-3.5 text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all",
+              required: true,
+              data: { password_visibility_target: "input" } %>
+          <button type="button"
+                  class="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-primary"
+                  data-action="click->password-visibility#toggle">
+            <span class="material-symbols-outlined" data-password-visibility-target="icon">
+              visibility
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <%= form.submit "Sign In",
+          class: "w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-[0.98] cursor-pointer" %>
+    <% end %>
+
+    <p class="mt-8 text-center text-sm text-slate-500 dark:text-slate-400">
+      Don't have an account?
+      <%= link_to "Sign up for free", new_registration_path, class: "text-primary font-bold hover:underline" %>
+    </p>
+  </div>
+</div>

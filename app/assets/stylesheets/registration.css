@@ -1,0 +1,107 @@
+/* Кастомные цвета */
+:root {
+  --color-primary: 236, 91, 19;  /* #ec5b13 */
+  --color-bg-light: 248, 246, 246;  /* #f8f6f6 */
+  --color-bg-dark: 34, 22, 16;  /* #221610 */
+}
+
+/* Цвета */
+.bg-primary {
+  background-color: rgb(var(--color-primary));
+}
+
+.bg-primary\/10 {
+  background-color: rgba(var(--color-primary), 0.1);
+}
+
+.bg-primary\/20 {
+  background-color: rgba(var(--color-primary), 0.2);
+}
+
+.bg-primary\/5 {
+  background-color: rgba(var(--color-primary), 0.05);
+}
+
+.text-primary {
+  color: rgb(var(--color-primary));
+}
+
+.border-primary {
+  border-color: rgb(var(--color-primary));
+}
+
+.border-primary\/10 {
+  border-color: rgba(var(--color-primary), 0.1);
+}
+
+.border-primary\/20 {
+  border-color: rgba(var(--color-primary), 0.2);
+}
+
+.shadow-primary\/20 {
+  box-shadow: 0 10px 15px -3px rgba(var(--color-primary), 0.2);
+}
+
+.hover\:bg-primary\/90:hover {
+  background-color: rgba(var(--color-primary), 0.9);
+}
+
+.hover\:text-primary:hover {
+  color: rgb(var(--color-primary));
+}
+
+.focus\:border-primary:focus {
+  border-color: rgb(var(--color-primary));
+}
+
+.focus\:ring-primary:focus {
+  --tw-ring-color: rgba(var(--color-primary), 0.5);
+}
+
+/* Фоновые цвета */
+.bg-background-light {
+  background-color: #f8f6f6;
+}
+
+.dark .bg-background-dark {
+  background-color: #221610;
+}
+
+/* Шрифты */
+.font-display {
+  font-family: 'Public Sans', sans-serif;
+}
+
+/* Скругления */
+.rounded-default {
+  border-radius: 0.25rem;
+}
+
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
+.rounded-full {
+  border-radius: 9999px;
+}
+
+/* Адаптация для темной темы */
+.dark .bg-white {
+  background-color: #1e293b; /* slate-800 */
+}
+
+.dark .bg-slate-900\/50 {
+  background-color: rgba(15, 23, 42, 0.5); /* slate-900 с прозрачностью */
+}
+
+.dark .text-slate-900 {
+  color: #f1f5f9; /* slate-100 */
+}
+
+.dark .border-slate-200 {
+  border-color: #334155; /* slate-700 */
+}
